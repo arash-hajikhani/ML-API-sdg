@@ -12,10 +12,11 @@ from sys import platform
 class prediction:
     def __init__(self):
         if platform == "linux" or platform == "linux2":
-            self.wv = api.load('word2vec-google-news-300')
-        #     self.wv = gensim.models.KeyedVectors.load_word2vec_format("ML_MODEL/GoogleNews-vectors-negative300.bin.zip", binary=True)
+            path = api.load('word2vec-google-news-300', return_path=True)
+            self.wv = gensim.models.KeyedVectors.load_word2vec_format(path, binary=True)
         else:
             self.wv = gensim.models.KeyedVectors.load_word2vec_format("ML_MODEL/GoogleNews-vectors-negative300.bin.gz", binary=True)
+        
         self.wv.init_sims(replace=True)
         self.filename = 'ML_MODEL/word2vec-logreg_SDG-ML-model3.sav'
         self.loaded_model = pickle.load(open(self.filename, 'rb'))
