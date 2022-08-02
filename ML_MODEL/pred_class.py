@@ -6,13 +6,12 @@ import os
 import ML_MODEL.preprocessing as preprocess
 warnings.filterwarnings('ignore')
 import gensim
-import gensim.downloader as api
 from sys import platform
 
 class prediction:
     def __init__(self):
         if platform == "linux" or platform == "linux2":
-            self.wv = api.load('word2vec-google-news-300')
+            self.wv = gensim.downloader.load('word2vec-google-news-300')
         #     self.wv = gensim.models.KeyedVectors.load_word2vec_format("ML_MODEL/GoogleNews-vectors-negative300.bin.zip", binary=True)
         else:
             self.wv = gensim.models.KeyedVectors.load_word2vec_format("ML_MODEL/GoogleNews-vectors-negative300.bin.gz", binary=True)
