@@ -16,7 +16,6 @@ class prediction:
             self.wv = gensim.models.KeyedVectors.load_word2vec_format(path, binary=True)
         else:
             self.wv = gensim.models.KeyedVectors.load_word2vec_format("ML_MODEL/GoogleNews-vectors-negative300.bin.gz", binary=True)
-        
         self.wv.init_sims(replace=True)
         self.filename = 'ML_MODEL/word2vec-logreg_SDG-ML-model3.sav'
         self.loaded_model = pickle.load(open(self.filename, 'rb'))
