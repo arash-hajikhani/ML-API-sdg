@@ -1,14 +1,13 @@
 from flask import Flask,request,render_template
 import pandas as pd
 import json
-import subprocess
-import sys
+import gensim.downloader as api
+import os
 
-subprocess.run([sys.executable, "-c", "[python]"])
-subprocess.run([sys.executable, "-c", "[import gensim.downloader as api]"])
-subprocess.run([sys.executable, "-c", "[api.load('word2vec-google-news-300')  ]"])
+if not os.path.abspath("word2vec-google-news-300.bin"):
+    wv = api.load('word2vec-google-news-300')
+    wv.save("word2vec-google-news-300.bin")
 
- 
 
 app = Flask(__name__)
 app.secret_key = "1/1201085579334815:f^=8*92s49es7n@taynn^zrbh63brmvf3p(%q8#b)p&s4ycpc$"
