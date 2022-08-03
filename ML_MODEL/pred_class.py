@@ -12,8 +12,8 @@ from sys import platform
 class prediction:
     def __init__(self):
         if platform == "linux" or platform == "linux2":
-            path = api.load('word2vec-google-news-300', return_path=True)
-            self.wv = gensim.models.KeyedVectors.load_word2vec_format(path, binary=True)
+            # path = api.load('word2vec-google-news-300', return_path=True)
+            self.wv = gensim.models.KeyedVectors.load_word2vec_format("/root/gensim-data/word2vec-google-news-300/word2vec-google-news-300.gz", binary=True)
         else:
             self.wv = gensim.models.KeyedVectors.load_word2vec_format("ML_MODEL/GoogleNews-vectors-negative300.bin.gz", binary=True)
         self.wv.init_sims(replace=True)
