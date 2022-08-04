@@ -4,7 +4,7 @@ import json
 import gensim.downloader as api
 import os
 
-if not os.path.abspath("word2vec-google-news-300.bin"):
+if not os.path.exists(os.path.abspath("word2vec-google-news-300.bin")):
     wv = api.load('word2vec-google-news-300')
     wv.save("word2vec-google-news-300.bin")
 
